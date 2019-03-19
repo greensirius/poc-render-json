@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Demo",
-    "slug": "rn-demo",
+    "name": "Vision",
+    "slug": "vision-ui",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
