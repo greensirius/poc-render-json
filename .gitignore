@@ -24,3 +24,5 @@ yarn-error.log*
 
 # react-native
 /.expo
+/coverage
+react-app-env.d.ts

@@ -6,12 +6,17 @@
   "scripts": {
     "start:web": "react-scripts start",
     "build:web": "react-scripts build",
-    "test": "react-scripts test",
     "eject:cra": "react-scripts eject",
     "start:expo": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject:expo": "expo eject"
+    "eject:expo": "expo eject",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "check-format": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "tslint -p .",
+    "typecheck": "tsc --noEmit -p .",
+    "jest": "jest --coverage --passWithNoTests",
+    "test": "yarn lint && yarn typecheck && yarn jest"
   },
   "dependencies": {
     "expo": "^32.0.0",
@@ -23,8 +28,26 @@
     "react-scripts": "2.1.8"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
-    "schedule": "0.4.0"
+    "@types/expo": "^32.0.8",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-native": "^0.57.41",
+    "@types/react-test-renderer": "^16.8.1",
+    "jest-expo": "^32.0.0",
+    "prettier": "^1.16.4",
+    "prettier-tslint": "^0.4.2",
+    "react-native-testing-library": "^1.6.1",
+    "react-test-renderer": "^16.8.4",
+    "schedule": "0.4.0",
+    "ts-jest": "^24.0.0",
+    "tsconfig-kodefox": "^1.0.1",
+    "tslint": "^5.14.0",
+    "tslint-config-kodefox": "^1.1.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3333"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,5 +57,43 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "prettier": {
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.ts?(x)",
+      "**/?(*.)+(spec|test).ts?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "ios.ts",
+      "ios.tsx",
+      "android.ts",
+      "android.tsx"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": {
+          "jsx": "react"
+        }
+      }
+    }
+  }
 }
