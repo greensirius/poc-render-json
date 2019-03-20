@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {Component} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
 class App extends Component {
   render() {
