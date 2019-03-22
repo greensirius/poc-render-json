@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "description": "Navigation is similar to a \"site map\". It describes the structure of the application in terms of pages or scenes. Each \"route\" is like a URL and the view template it points to is like the page that will be rendered for that route.",
+  "properties": {
+    "initialRoute": { "type": "string" },
+    "navigationType": { "type": "string", "enum": ["stack"] },
+    "routes": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "required": ["initialRoute", "navigationType", "routes"],
+  "additionalProperties": false
+}

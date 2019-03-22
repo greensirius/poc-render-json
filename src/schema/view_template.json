@@ -1,0 +1,74 @@
+{
+  "type": "object",
+  "description": "A view template is a way of describing a page or scene in your application. The \"render\" field contains a list of elements to render.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of your this view. It should be in upper camel case.",
+      "examples": ["ArticleList"]
+    },
+    "render": {
+      "type": "array",
+      "description": "A list of one or more elements to render. Each element refers to a built-in component (such as an Image).",
+      "items": {
+        "$ref": "#/definitions/element"
+      }
+    },
+    "styles": {
+      "type": "object",
+      "description": "A list of style sets (each identified by name) which you can refer to within your render list above.",
+      "additionalProperties": {
+        "$ref": "#/definitions/style"
+      }
+    }
+  },
+  "required": ["name", "render"],
+  "additionalProperties": false,
+  "definitions": {
+    "element": {
+      "type": "object",
+      "description": "An element is a description of an item that will be rendered on screen. It must refer to a component (such as an Image or View) and it usually has additional properties such as style.",
+      "properties": {
+        "component": {
+          "type": "string",
+          "description": "This refers to the name of a built-in component. It should be in upper camel case.",
+          "examples": ["Image"]
+        },
+        "style": {
+          "description": "This property should be either a string (referring to the name of a style defined at the top level) or a set of key/value pairs describing the layout and styling of this element when it is rendered.",
+          "examples": ["styles.large", { "flex": 1 }],
+          "oneOf": [{ "type": "string" }, { "$ref": "#/definitions/style" }]
+        },
+        "children": {
+          "description": "This is a list of zero or more elements that will be rendered inside this element.",
+          "oneOf": [
+            { "type": "array", "items": { "$ref": "#/definitions/element" } },
+            { "$ref": "#/definitions/element" }
+          ]
+        },
+        "onPress": {
+          "$ref": "#/definitions/action"
+        }
+      },
+      "required": ["component"]
+    },
+    "style": {
+      "type": "object",
+      "description": "A named list of styles, each of which is a set of key/value pairs describing the layout and styling of an element.",
+      "examples": [{ "large": { "width": 200, "fontSize": 22 } }],
+      "additionalProperties": {
+        "oneOf": [{ "type": "number" }, { "type": "string" }]
+      }
+    },
+    "action": {
+      "type": "object",
+      "description": "An action is an object that describes something the application should do (such as show a dialog). It must have the action name and optionally some other properties.",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "The name of the action. Often this will be of the form `controller/thing`"
+        }
+      }
+    }
+  }
+}

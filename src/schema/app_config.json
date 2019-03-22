@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of your app as it appears on your home screen. Also used as the page title on web."
+    },
+    "slug": {
+      "type": "string",
+      "description": "The friendly url name for publishing.",
+      "examples": ["my-app-name"]
+    },
+    "description": {
+      "type": "string",
+      "description": "A short description of what your app is and why it is great."
+    },
+    "version": {
+      "type": "string",
+      "description": "Your app version; use whatever versioning scheme that you like"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Local path to an image to use for your app's icon. We recommend that you use a 1024x1024 png file."
+    },
+    "splash": {
+      "type": "object",
+      "description": "Configuration for loading screen (splash screen) for your app.",
+      "properties": {
+        "image": {
+          "type": "string",
+          "description": "Local path to an image to fill the background of the loading screen. Must be a PNG.",
+          "pattern": "\\.(png|PNG)$"
+        },
+        "resizeMode": {
+          "type": "string",
+          "description": "Determines how the \"image\" will be displayed in the splash screen.",
+          "enum": ["cover", "contain"],
+          "default": "contain"
+        },
+        "backgroundColor": {
+          "type": "string",
+          "description": "Color to fill the loading screen background. 6 character long hex color string.",
+          "pattern": "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$",
+          "examples": ["\"#000000\""]
+        }
+      }
+    },
+    "orientation": {
+      "type": "string",
+      "enum": ["default", "portrait", "landscape"],
+      "description": "Lock your app to a specific orientation with portrait or landscape. Defaults to no lock."
+    },
+    "primaryColor": {
+      "type": "string",
+      "description": "On Android, this will determine the color of your app in the multitasker. This is not used on iOS.",
+      "pattern": "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
+    }
+  },
+  "required": ["name", "slug", "version"],
+  "additionalProperties": false
+}
