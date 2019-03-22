@@ -1,32 +1,16 @@
 import React from 'react';
-import {renderElement, renderChildren} from './';
+import {getElement, parseComponentProps, renderChildren} from './';
+import {Context} from './types/generalTypes';
 
-type Component = {
-  component: any;
-  props: any;
-  children: Array<Component | string>;
-};
-
-type Context = {
-  componentContext: Array<Component>;
-};
-
-export default function renderPureComponent(props: Context) {
-  let {componentContext} = props;
-  return (
-    <React.Fragment>
-      {componentContext.map((renderItem, key) => {
-        let {component, props, children} = renderItem;
-        return (
-          <React.Fragment key={key}>
-            {React.createElement(
-              renderElement(component),
-              {...props},
-              renderChildren(children),
-            )}
-          </React.Fragment>
-        );
-      })}
-    </React.Fragment>
-  );
+export default function renderPureComponent(compProps: Context): any {
+  let {componentContext} = compProps;
+  const renderItems = componentContext.map((item, idx) => {
+    let {component, props, children} = item;
+    return React.createElement(
+      getElement(component),
+      {...parseComponentProps(component, props, idx)},
+      renderChildren(children),
+    );
+  });
+  return renderItems;
 }

@@ -2,10 +2,15 @@
   "extends": "tsconfig-kodefox",
   "allowSyntheticDefaultImports": true,
   "compilerOptions": {
+<<<<<<< HEAD
     "jsx": "preserve",
     "noEmit": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
+=======
+    "jsx": "react-native",
+    "noEmit": true
+>>>>>>> 02. John Wick: Enhancements
     "resolveJsonModule": true,
     "isolatedModules": true
   },
