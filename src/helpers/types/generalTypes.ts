@@ -1,7 +1,9 @@
+import React from 'react';
+
 export type Component = {
-  component: React.ReactElement<any>;
+  component: React.ReactNode | ElementType;
   props: any;
-  children: Array<Component>;
+  children: Array<Element>;
 };
 
 export type ElementType =

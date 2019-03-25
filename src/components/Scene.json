@@ -12,7 +12,6 @@
       "children": [
         {
           "component": "View",
-          "id": "",
           "props": {
             "style": {
               "flexDirection": "row",
@@ -33,11 +32,7 @@
                   "fontWeight": "500"
                 }
               },
-              "onTap": {
-                "action": "dialog/show",
-                "message": "Love Cindy"
-              },
-              "children": ["About You and Me"]
+              "children": ["About"]
             }
           ]
         },
@@ -82,22 +77,11 @@
                   "backgroundColor": "rgb(225,100,100)"
                 },
                 "onTap": {
-                  "action": "dialog/show",
-                  "message": "Hello World"
+                  "action": "dialog/alert",
+                  "message": "You are awesome!"
                 }
               },
-              "children": [
-                {
-                  "component": "Text",
-                  "props": {
-                    "style": {
-                      "color": "#FFF",
-                      "fontSize": 18
-                    }
-                  },
-                  "children": ["Button 1"]
-                }
-              ]
+              "children": ["Click Here"]
             },
             {
               "component": "TouchableOpacity",
@@ -110,9 +94,13 @@
                   "borderWidth": 1,
                   "borderColor": "#DFF",
                   "backgroundColor": "#FFF"
+                },
+                "onTap": {
+                  "action": "call/log-message",
+                  "message": "See in console log"
                 }
               },
-              "children": ["Button 2"]
+              "children": ["Log Message"]
             }
           ]
         }

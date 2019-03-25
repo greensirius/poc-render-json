@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
-import {getElement, renderPureComponent} from '.';
+import {renderPureComponent} from '.';
+import {PureComponent} from './renderPureComponent';
 import {Component} from './types/generalTypes';
 
 export default function renderChildren(child: Array<Component>) {
@@ -13,14 +14,12 @@ export default function renderChildren(child: Array<Component>) {
       child[0].hasOwnProperty('props') &&
       child[0].hasOwnProperty('children')
     ) {
-      let {component, props, children} = child[0];
-      return React.createElement(getElement(component), {...props}, children);
+      return <PureComponent {...child[0]} />;
     } else {
       return;
     }
   }
   if (child && child.length > 1) {
-    console.log('Child Array Of Objects : ', child);
     return renderPureComponent({componentContext: child});
   }
 }

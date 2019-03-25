@@ -1,16 +1,18 @@
-import {actionHandler} from '../helpers';
+// This parseComponentAttrubutes function will parse props that belongs to each elements
+// For example attributes source on Image and onPress on TouchableOpacity
+
+import {ElementType} from './types/generalTypes';
 
 export default function parseComponentAttributes(
-  el: any,
+  el: ElementType,
   props: any,
-  key: string | number,
+  actionHandler: (params: any) => void,
 ) {
   let {onTap} = props;
   switch (el) {
     case 'Image': {
       return {
         ...props,
-        key,
         source: {
           uri: props.source,
         },
@@ -19,18 +21,15 @@ export default function parseComponentAttributes(
     case 'Text': {
       return {
         ...props,
-        key,
-        onPress: () => actionHandler(onTap || {}),
       };
     }
     case 'TouchableOpacity': {
       return {
         ...props,
-        key,
         onPress: () => actionHandler(onTap || {}),
       };
     }
     default:
-      return {...props, key};
+      return props;
   }
 }
