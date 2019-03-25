@@ -5,6 +5,7 @@ export default function parseComponentAttributes(
   props: any,
   key: string | number,
 ) {
+  let {onTap} = props;
   switch (el) {
     case 'Image': {
       return {
@@ -19,14 +20,14 @@ export default function parseComponentAttributes(
       return {
         ...props,
         key,
-        onPress: () => actionHandler(props.onPress),
+        onPress: () => actionHandler(onTap || {}),
       };
     }
     case 'TouchableOpacity': {
       return {
         ...props,
         key,
-        onPress: () => actionHandler(props.onPress),
+        onPress: () => actionHandler(onTap || {}),
       };
     }
     default:

@@ -33,7 +33,7 @@
                   "fontWeight": "500"
                 }
               },
-              "onPress": {
+              "onTap": {
                 "action": "dialog/show",
                 "message": "Love Cindy"
               },
@@ -81,7 +81,7 @@
                   "borderColor": "rgb(200,60,60)",
                   "backgroundColor": "rgb(225,100,100)"
                 },
-                "onPress": {
+                "onTap": {
                   "action": "dialog/show",
                   "message": "Hello World"
                 }
