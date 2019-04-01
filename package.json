@@ -16,7 +16,8 @@
     "lint": "tslint -p .",
     "typecheck": "tsc --noEmit -p .",
     "jest": "jest --coverage --passWithNoTests",
-    "test": "yarn lint && yarn typecheck && yarn jest"
+    "test": "yarn lint && yarn typecheck && yarn jest",
+    "docgen": "jsonschema2md -o documentation/src/markdown -d src/schema -v 04 && cd documentation && gatsby develop"
   },
   "dependencies": {
     "expo": "^32.0.0",
