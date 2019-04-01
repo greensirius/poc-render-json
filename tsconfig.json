@@ -1,18 +1,13 @@
 {
   "extends": "tsconfig-kodefox",
+  "allowSyntheticDefaultImports": true,
   "compilerOptions": {
     "jsx": "preserve",
     "noEmit": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
