@@ -1,24 +1,15 @@
 import * as React from 'react';
-import { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {ActionProvider, actionHandler, renderPureComponent} from './helpers';
+import scene from './app/Scene.json';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Edit src/App.js and save to reload.</Text>
-      </View>
+      <ActionProvider value={{actionHandler}}>
+        {renderPureComponent({componentContext: scene.render})}
+      </ActionProvider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
